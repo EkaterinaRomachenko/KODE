@@ -1,0 +1,28 @@
+.modal {
+  padding: 20px 16px 8px 16px;
+  width: 373px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  margin: 0 auto;
+}
+
+.iconClose{
+  background-image: url('../../image/icon-close.svg');
+  background-color: transparent;
+  position: absolute;
+  top: 24px;
+  right: 23px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.iconClose:hover{
+  opacity: 0.8;
+  transition: all 0.3s ease 0s;
+}

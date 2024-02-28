@@ -1,0 +1,51 @@
+.title {
+  padding-top: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+}
+
+.form {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 19px 0 21px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  text-align: left;
+}
+
+.input {
+  height: 0;
+  width: 0;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-block;
+  background-image: url('../../image/sort-input.svg') ;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon_active {
+  background-image: url('../../image/sort-input-active.png');
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}

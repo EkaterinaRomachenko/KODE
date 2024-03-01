@@ -7,6 +7,10 @@
 | --- | --- | --- | --- | --- |
 | HTML5 | CSS3 | &nbsp;&nbsp;&nbsp;JS | React | Redux |
 
-
-
 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExenJoY3M4Z29zNnkyMzZnN25mZTFjazNla3l6aGIxbTUxeXU2bmhmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/k0ijJhqrUP4T2EvmJ1/giphy.gif" width="200" height="145" alt = "Гифка работающего разработчика"/>
+
+---
+
+Ссылка на проект :
+
+https://ekaterinaromachenko.github.io/KODE/

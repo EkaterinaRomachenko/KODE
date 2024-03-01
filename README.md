@@ -13,4 +13,4 @@
 
 Ссылка на проект :
 
-https://ekaterinaromachenko.github.io/KODE/
+https://ekaterinaromachenko.github.io/KODE

@@ -2,8 +2,11 @@ import styles from './userList.module.css';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/ru';
+import { useSelector } from 'react-redux';
 
 function UserList({ avatarUrl, firstName, lastName, userTag, position, birthday, id }) {
+  const sort = useSelector((state) => state.filter.checkedSort);
+
   return (
     <>
       <li className={styles.list}>
@@ -18,14 +21,11 @@ function UserList({ avatarUrl, firstName, lastName, userTag, position, birthday,
             </h2>
             <p className={styles.subtitle}>{position}</p>
           </div>
-          <p className={styles.birthday}>{moment(birthday).format('DD MMM')}</p>
+          {sort === 'data-birth' && (
+            <p className={styles.birthday}>{moment(birthday).format('DD MMM')}</p>
+          )}
         </div>
       </li>
-      {/* <div className={styles.underline}>
-        <div className={styles.underline__line}/>
-        <p className={styles.underline__year}>2020</p>
-        <div className={styles.underline__line} />
-      </div> */}
     </>
   );
 }

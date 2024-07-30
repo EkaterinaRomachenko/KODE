@@ -3,6 +3,29 @@ import Users from '../components/Users/Users';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 
+//сортировка по алфавиту
+function sortByAlphabet(a, b) {
+  return a.firstName.localeCompare(b.firstName);
+}
+
+//сортировка по дате рождения
+function sortByBirthDay(a, b) {
+  let now = new Date(); //Текущя дата
+  let user1 = new Date(a.birthday);
+  let user2 = new Date(b.birthday);
+  //добавляем текущий год
+  let usernow1 = new Date(now.getFullYear(), user1.getMonth(), user1.getDate());
+  let usernow2 = new Date(now.getFullYear(), user2.getMonth(), user2.getDate());
+
+  if (usernow1 < now) {
+    usernow1.setFullYear(usernow1.getFullYear() + 1);
+  }
+  if (usernow2 < now) {
+    usernow2.setFullYear(usernow2.getFullYear() + 1);
+  }
+  return usernow1 - usernow2;
+}
+
 function Home() {
   const items = useSelector((state) => state.users.items);
   const sort = useSelector((state) => state.filter.checkedSort);
@@ -26,29 +49,6 @@ function Home() {
       }),
     [search, items],
   );
-
-  //сортировка по алфавиту
-  function sortByAlphabet(a, b) {
-    return a.firstName.localeCompare(b.firstName);
-  }
-
-  //сортировка по дате рождения
-  function sortByBirthDay(a, b) {
-    let now = new Date(); //Текущя дата
-    let user1 = new Date(a.birthday);
-    let user2 = new Date(b.birthday);
-    //добавляем текущий год
-    let usernow1 = new Date(now.getFullYear(), user1.getMonth(), user1.getDate());
-    let usernow2 = new Date(now.getFullYear(), user2.getMonth(), user2.getDate());
-
-    if (usernow1 < now) {
-      usernow1.setFullYear(usernow1.getFullYear() + 1);
-    }
-    if (usernow2 < now) {
-      usernow2.setFullYear(usernow2.getFullYear() + 1);
-    }
-    return usernow1 - usernow2;
-  }
 
   const sortFunk = sort === 'alphabet' ? sortByAlphabet : sortByBirthDay;
 

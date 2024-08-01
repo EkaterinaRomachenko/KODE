@@ -1,0 +1,28 @@
+.networkError {
+  display: flex;
+  flex-direction: column;
+  height: 108px;
+  width: 100%;
+  padding: 16px 0px 12px 24px;
+  background-color: rgba(244, 67, 54, 1);
+}
+
+.title {
+  flex: 1 1 auto;
+  font-family: Inter;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+
+.text {
+  flex: 1 1 auto;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}

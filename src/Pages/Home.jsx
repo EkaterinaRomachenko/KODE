@@ -26,11 +26,12 @@ function sortByBirthDay(a, b) {
   return usernow1 - usernow2;
 }
 
-function Home() {
+function Home({isOnline, isLoading}) {
   const items = useSelector((state) => state.users.items);
   const sort = useSelector((state) => state.filter.checkedSort);
   const search = useSelector((state) => state.filter.searchValue);
 
+  // фильтрация пользователей
   const filterUser = useMemo(
     () =>
       items.filter((user) => {
@@ -50,12 +51,16 @@ function Home() {
     [search, items],
   );
 
-  const sortFunk = sort === 'alphabet' ? sortByAlphabet : sortByBirthDay;
+  // сортировка по алфавиту или по дате рождения
+  const sortedUsers = useMemo(() => {
+    const sortFunction = sort === 'alphabet' ? sortByAlphabet : sortByBirthDay;
+    return [...filterUser].sort(sortFunction);
+  }, [filterUser, sort]);
 
   return (
     <section className="main">
-      <TopAppBar searchValue={search} />
-      <Users items={filterUser.sort(sortFunk)} />
+      <TopAppBar searchValue={search} isOnline={isOnline} isLoading={isLoading} />
+      <Users items={sortedUsers} />
     </section>
   );
 }

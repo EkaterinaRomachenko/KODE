@@ -5,7 +5,7 @@ import { setCheckedSort } from '../../redux/slice/filterSlice';
 function Sort({setIsOpen}) {
   const sort = useSelector((state) => state.filter.checkedSort);
   const dispatch = useDispatch();
-  const chengeSortValue = (e) => {
+  const changeSortValue = (e) => {
     dispatch(setCheckedSort(e.target.value));
     setIsOpen(false)
   };
@@ -21,7 +21,7 @@ function Sort({setIsOpen}) {
             className={styles.input}
             name="sort"
             value="alphabet"
-            onChange={chengeSortValue}
+            onChange={changeSortValue}
             checked={sort === 'alphabet'}
           />
           <span
@@ -36,7 +36,7 @@ function Sort({setIsOpen}) {
             className={styles.input}
             name="sort"
             value="data-birth"
-            onChange={chengeSortValue}
+            onChange={changeSortValue}
             checked={sort === 'data-birth'}
           />
           <span

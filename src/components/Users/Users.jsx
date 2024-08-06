@@ -32,7 +32,7 @@ function upcomingBirthdays(items) {
 }
 
 function Users({ items }) {
-  const { status } = useSelector((state) => state.users.status);
+  const status = useSelector((state) => state.users.status);
   const sort = useSelector((state) => state.filter.checkedSort);
   const currentYear = new Date().getFullYear();
 
@@ -40,13 +40,14 @@ function Users({ items }) {
   const upcoming = useMemo(() => upcomingBirthdays(items), [items]);
   const past = useMemo(() => pastBirthdays(items), [items]);
 
+  if (status === 'loading') {
+    return [...new Array(12)].map((_, index) => <Skeleton key={index} />);
+  }
   if (status === 'error') {
     return <ErrorMessage />;
   }
 
-  if (status === 'loading') {
-    return [...new Array(12)].map((_, index) => <Skeleton key={index} />);
-  }
+
 
   return (
     <div className={styles.users}>

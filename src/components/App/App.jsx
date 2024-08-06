@@ -11,26 +11,29 @@ import useNavigatorOnline from 'use-navigator-online';
 function App() {
   const categoryId = useSelector((state) => state.filter.categoryId);
   const dispatch = useDispatch();
-  const isOnline = useNavigatorOnline();
-  const [isLoading, setIsLoading] = useState(false); 
+  const { isOnline } = useNavigatorOnline();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const category = categoryId ? `${categoryId}` : 'all';
     const options = {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json', Prefer: `code=200, example=${category} ` },
+      headers: { 'Content-Type': 'application/json', Prefer: `code=200, example=${categoryId} ` },
     };
-
     const getFetchUsers = async () => {
-      dispatch(fetchUsers({ options }));
+      try {
+        setIsLoading(true);
+        await dispatch(fetchUsers({ options }));
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
     };
 
     if (isOnline) {
-      setIsLoading(true);
       getFetchUsers();
-      setIsLoading(false);
     }
-  }, [categoryId, dispatch, isOnline]);
+  }, [categoryId, isOnline, dispatch]);
 
   return (
     <div className={styles.app}>

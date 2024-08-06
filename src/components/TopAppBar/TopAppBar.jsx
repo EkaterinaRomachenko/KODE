@@ -1,11 +1,10 @@
 import styles from './topAppBar.module.css';
-import Modal from '../Modal/Modal';
 import { useState } from 'react';
-import Sort from '../Sort/Sort';
-import Search from '../Search/Search';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId } from '../../redux/slice/filterSlice';
-// import useNavigatorOnline from 'use-navigator-online';
+import Modal from '../Modal/Modal';
+import Sort from '../Sort/Sort';
+import Search from '../Search/Search';
 import NetworkError from '../NetworkError/NetworkError';
 import NetworkLoading from '../NetworkLoading/NetworkLoading';
 
@@ -25,7 +24,7 @@ const categories = {
   analytics: 'Аналитика',
 };
 
-function TopAppBar({ searchValue, isLoading, isOnline }) {
+function TopAppBar({ searchValue, isOnline, isLoading }) {
   // для видимости модального окна
   const [isOpen, setIsOpen] = useState(false);
   // фильтрация категорий
@@ -38,10 +37,10 @@ function TopAppBar({ searchValue, isLoading, isOnline }) {
 
   return (
     <nav className={styles.navigation}>
-      {isLoading ? (
-        <NetworkLoading />
-      ) : !isOnline ? (
+      {!isOnline ? (
         <NetworkError />
+      ) : isLoading ? (
+        <NetworkLoading />
       ) : (
         <>
           <h1 className={styles.title}>Поиск</h1>

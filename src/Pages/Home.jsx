@@ -26,7 +26,7 @@ function sortByBirthDay(a, b) {
   return usernow1 - usernow2;
 }
 
-function Home({isOnline, isLoading}) {
+function Home({ isOnline, isLoading }) {
   const items = useSelector((state) => state.users.items);
   const sort = useSelector((state) => state.filter.checkedSort);
   const search = useSelector((state) => state.filter.searchValue);

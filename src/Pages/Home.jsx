@@ -26,7 +26,7 @@ function sortByBirthDay(a, b) {
   return usernow1 - usernow2;
 }
 
-function Home({ isOnline, isLoading }) {
+function Home({ isOnline}) {
   const items = useSelector((state) => state.users.items);
   const sort = useSelector((state) => state.filter.checkedSort);
   const search = useSelector((state) => state.filter.searchValue);
@@ -59,7 +59,7 @@ function Home({ isOnline, isLoading }) {
 
   return (
     <section className="main">
-      <TopAppBar searchValue={search} isOnline={isOnline} isLoading={isLoading} />
+      <TopAppBar searchValue={search} isOnline={isOnline}  />
       <Users items={sortedUsers} />
     </section>
   );

@@ -24,11 +24,12 @@ const categories = {
   analytics: 'Аналитика',
 };
 
-function TopAppBar({ searchValue, isOnline, isLoading }) {
+function TopAppBar({ searchValue, isOnline }) {
   // для видимости модального окна
   const [isOpen, setIsOpen] = useState(false);
   // фильтрация категорий
   const categoryId = useSelector((state) => state.filter.categoryId);
+  const status = useSelector((state) => state.users.status);
   const dispatch = useDispatch();
 
   const onClickCategory = (value) => {
@@ -39,7 +40,7 @@ function TopAppBar({ searchValue, isOnline, isLoading }) {
     <nav className={styles.navigation}>
       {!isOnline ? (
         <NetworkError />
-      ) : isLoading ? (
+      ) : status === 'loading' ? (
         <NetworkLoading />
       ) : (
         <>
